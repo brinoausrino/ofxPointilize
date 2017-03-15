@@ -263,7 +263,10 @@ string ofxPointilize::getFragmentShader()
                   float depth = (depthVal.r + depthVal.g + depthVal.b) / 3.0;
                   //depth = map(depth,nearClip,farClip,0.0,1.0,true);
                   
-                  if (dynamicSize == 1) {
+				  if (dynamicSize == 0) {
+					  if( depth == 0) radius = 0;
+				  }
+                  else if (dynamicSize == 1) {
                       radius *= (1 - luminance);
                   }
                   else if (dynamicSize == 2) {
